@@ -22,6 +22,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Transform origin = null;
     [SerializeField] private GameObject visual;
     [SerializeField] private GameObject footAnchor;
+    private PolygonCollider2D footCol;
 
     private Rigidbody2D _rigid;
 
@@ -30,6 +31,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        footCol = footAnchor.transform.GetChild(0).GetComponent<PolygonCollider2D>();
         currentHP = maxHP;
     }
 
@@ -85,12 +87,14 @@ public class PlayerMove : MonoBehaviour
             {
                 onKick = true;
                 footAnchor.SetActive(true);
+                footCol.enabled = true;
             })
             .Append(footAnchor.transform.DORotate(new Vector3(0, 0, footAnchor.transform.localScale.x * -90), kickDuration))
             .AppendInterval(0.1f)
             .OnComplete(() =>
             {
                 footAnchor.SetActive(false);
+                footCol.enabled = false;
                 footAnchor.transform.rotation = new Quaternion(0, 0, 0, 0);
                 onKick = false;
                 EndOfKick?.Invoke();

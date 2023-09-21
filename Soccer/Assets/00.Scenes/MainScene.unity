@@ -766,7 +766,9 @@ GameObject:
   m_Component:
   - component: {fileID: 970530545}
   - component: {fileID: 970530544}
-  m_Layer: 0
+  - component: {fileID: 970530546}
+  - component: {fileID: 970530547}
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -840,6 +842,50 @@ Transform:
   m_Father: {fileID: 103300688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &970530546
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970530543}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.40625, y: 0.1875}
+    newSize: {x: 0.8125, y: 0.375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.171875, y: 0.09375}
+      - {x: -0.203125, y: 0.0625}
+      - {x: -0.203125, y: -0.09375}
+      - {x: 0.203125, y: -0.09375}
+      - {x: 0.203125, y: 0.0625}
+      - {x: 0.171875, y: 0.09375}
+--- !u!114 &970530547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970530543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa60fc3ac08d134d8ec73fffc3fc50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 1
 --- !u!1001 &1753370778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,13 +955,14 @@ GameObject:
   - component: {fileID: 1769439663}
   - component: {fileID: 1769439665}
   - component: {fileID: 1769439666}
+  - component: {fileID: 1769439667}
   m_Layer: 0
   m_Name: MonsterBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1769439663
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1020,6 +1067,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.46875
+--- !u!114 &1769439667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769439662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfba07d42d82c74188dc4969336d16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1773117331
 GameObject:
   m_ObjectHideFlags: 0
