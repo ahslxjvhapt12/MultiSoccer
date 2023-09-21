@@ -9,16 +9,20 @@ public class PlayerMove : MonoBehaviour
     [SerializeField][Range(1f, 15f)] private float speed = 5f;
     [SerializeField][Range(0f, 1f)] private float rayDinstance = 1f;
     [SerializeField][Range(1f, 10f)] private float jumpPower = 10f;
+    [SerializeField] private float maxHP = 100;
+    private float currentHP;
 
     [Header("-")]
     [SerializeField] private Transform origin = null;
     [SerializeField] private GameObject visual;
+    [SerializeField] private GameObject footAnchor;
 
     private Rigidbody2D _rigid;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        currentHP = maxHP;
     }
 
     private void Update()
