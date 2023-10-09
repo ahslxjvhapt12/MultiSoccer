@@ -25,8 +25,14 @@ public class PlayerMove : MonoBehaviour
     private PolygonCollider2D footCol;
 
     private Rigidbody2D _rigid;
-
     private event Action EndOfKick;
+
+
+    [Header("Networks")]
+    [SerializeField] float syncDelay = 0.05f;
+    [SerializeField] float syncDistanceErr = 0.1f;
+    private float lastSyncTime = 0f;
+    private Vector3 lastSyncPosition = Vector3.zero;
 
     private void Awake()
     {
@@ -90,7 +96,7 @@ public class PlayerMove : MonoBehaviour
                 footCol.enabled = true;
             })
             .Append(footAnchor.transform.DORotate(new Vector3(0, 0, footAnchor.transform.localScale.x * -90), kickDuration))
-            .AppendInterval(0.1f)
+            .AppendInterval(kickIntervalTime)
             .OnComplete(() =>
             {
                 footAnchor.SetActive(false);
