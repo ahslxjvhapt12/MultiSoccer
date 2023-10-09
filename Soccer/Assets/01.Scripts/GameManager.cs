@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using H00N.Network;
+using Packets;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,5 +17,22 @@ public class GameManager : MonoBehaviour
                 instance = GameObject.Find("GameManager")?.GetComponent<GameManager>();
             return instance;
         }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+            return;
+        }
+
+        NetworkManager.Instance = gameObject.AddComponent<NetworkManager>();
+        SceneLoader.Instance = gameObject.AddComponent<SceneLoader>();
     }
 }
