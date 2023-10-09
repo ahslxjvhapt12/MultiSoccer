@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace H00N.Network
+namespace QWER.Network
 {
     public class Connector
     {

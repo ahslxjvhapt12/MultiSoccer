@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace H00N.Network
+namespace QWER.Network
 {
     public class SharedBuffer
     {
