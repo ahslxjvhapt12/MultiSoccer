@@ -1,13 +1,13 @@
 ﻿using System;
-using QWER.Network;
+using H00N.Network;
 
 namespace Packets
 {
-    public class C_RoomEnterPacket : Packet
+    public class C_LogInPacket : Packet
     {
-        public override ushort ID => (ushort)PacketID.C_RoomEnterPacket;
+        public override ushort ID => (ushort)PacketID.C_LogInPacket;
 
-        public ushort playerID;
+        public string nickname;
 
         public override void Deserialize(ArraySegment<byte> buffer)
         {
@@ -15,7 +15,7 @@ namespace Packets
 
             process += sizeof(ushort);
             process += sizeof(ushort);
-            process += PacketUtility.ReadUShortData(buffer, process, out playerID);
+            process += PacketUtility.ReadStringData(buffer, process, out nickname);
         }
 
         public override ArraySegment<byte> Serialize()
@@ -25,7 +25,7 @@ namespace Packets
 
             process += sizeof(ushort);
             process += PacketUtility.AppendUShortData(this.ID, buffer, process);
-            process += PacketUtility.AppendUShortData(this.playerID, buffer, process);
+            process += PacketUtility.AppendStringData(this.nickname, buffer, process);
             PacketUtility.AppendUShortData(process, buffer, 0);
 
             return UniqueBuffer.Close(process);

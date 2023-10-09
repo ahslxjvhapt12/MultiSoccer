@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QWER.Network
+namespace H00N.Network
 {
     public abstract class DataPacket
     {

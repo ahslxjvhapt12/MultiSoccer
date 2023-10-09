@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QWER.Network
+namespace H00N.Network
 {
     public class PacketUtility
     {
