@@ -18,7 +18,7 @@ public class NetworkManager : MonoBehaviour
 
     private void Awake()
     {
-        IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("192.168.0.13"), 8081);
+        IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("172.31.2.230"), 8081);
         session = new ServerSession();
 
         connector = new Connector(endPoint, session);
