@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Packets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -124,13 +123,4 @@ public class PlayerMove : MonoBehaviour
         Gizmos.DrawLine(origin.position, origin.position - new Vector3(0, rayDinstance, 0));
     }
 
-    public void SetPosition(PlayerPacket playerData)
-    {
-        Vector3 pos = transform.position;
-        pos.x = playerData.x;
-        pos.y = playerData.y;
-        pos.z = playerData.z;
-
-        transform.position = pos;
-    }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace H00N.Network
+namespace QWER.NETWORK
 {
     public class UniqueBuffer
     {

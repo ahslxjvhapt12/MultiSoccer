@@ -1,6 +1,9 @@
-﻿using H00N.Network;
+﻿using QWER.NETWORK;
 using System.Net;
 using System.Net.Sockets;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Server
 {
@@ -10,9 +13,9 @@ namespace Server
         public static Dictionary<ushort, Player> players = new Dictionary<ushort, Player>();
         public static ushort playerCount = 0;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("192.168.0.13"), 8081);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("172.31.2.230"), 8081);
 
             Listener listener = new Listener(endPoint);
             if (listener.Listen(10))
@@ -25,10 +28,10 @@ namespace Server
         {
             int lastFlushTime = Environment.TickCount;
 
-            while(true)
+            while (true)
             {
                 int currentTime = Environment.TickCount;
-                if(currentTime - lastFlushTime > delay)
+                if (currentTime - lastFlushTime > delay)
                 {
                     room.AddJob(() => room.FlushPacketQueue());
                     lastFlushTime = currentTime;

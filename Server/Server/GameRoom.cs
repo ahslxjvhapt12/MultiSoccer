@@ -1,4 +1,5 @@
-﻿using H00N.Network;
+﻿using QWER.NETWORK;
+using System.Numerics;
 
 namespace Server
 {
@@ -10,17 +11,19 @@ namespace Server
 
         private Queue<Tuple<Packet, ushort>> packetQueue = new Queue<Tuple<Packet, ushort>>();
 
-        public void AddJob(Action action) => jobQueue.Push(action);
+        private void AddJob(Action action) => jobQueue.Push(action);
 
         public void FlushPacketQueue()
         {
-            while(packetQueue.Count > 0)
+            while (packetQueue.Count > 0)
             {
                 Tuple<Packet, ushort> tuple = packetQueue.Dequeue();
+
                 Packet packet = tuple.Item1;
                 ushort except = tuple.Item2;
 
                 ArraySegment<byte> buffer = packet.Serialize();
+
                 for (ushort i = 0; i < players.Count; i++)
                 {
                     ushort playerID = players[i];
@@ -32,7 +35,6 @@ namespace Server
                 }
             }
         }
-
 
         public void AddPlayer(ushort playerID)
         {

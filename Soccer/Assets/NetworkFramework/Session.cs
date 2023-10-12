@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections.Generic;
 
-namespace H00N.Network
+namespace QWER.NETWORK
 {
     public abstract class Session
     {

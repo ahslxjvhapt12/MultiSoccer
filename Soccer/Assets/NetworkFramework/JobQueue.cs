@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace H00N.Network
+namespace QWER.NETWORK
 {
     public class JobQueue : IFlushable<Action>
     {

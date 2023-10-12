@@ -8,11 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="H00N.Network">
-      <HintPath>..\..\..\Server\H00N.Network\bin\Debug\net6.0\H00N.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="Packets">
-      <HintPath>..\Packets\bin\Debug\net6.0\Packets.dll</HintPath>
+    <Reference Include="QWER.NETWORK">
+      <HintPath>C:\Users\USER\source\repos\NetworkFramework\Packets\bin\Debug\net6.0\QWER.NETWORK.dll</HintPath>
     </Reference>
   </ItemGroup>
 

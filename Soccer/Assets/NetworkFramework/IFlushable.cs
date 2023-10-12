@@ -1,4 +1,4 @@
-﻿namespace H00N.Network
+﻿namespace QWER.NETWORK
 {
     public interface IFlushable<T>
     {

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using H00N.Network;
-using Packets;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -34,15 +32,6 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
             return;
         }
-
-        NetworkManager.Instance = gameObject.AddComponent<NetworkManager>();
-        SceneLoader.Instance = gameObject.AddComponent<SceneLoader>();
-    }
-
-    public void AddPlayer(PlayerPacket p)
-    {
-        PlayerMove player = Instantiate(otherPlayer, new Vector3(p.x, p.y, p.z), Quaternion.identity);
-        otherPlayers.Add(p.playerID, player);
     }
 
     public PlayerMove GetPlayer(ushort id)
