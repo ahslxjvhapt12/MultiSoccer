@@ -11,7 +11,7 @@ namespace Server
 
         private Queue<Tuple<Packet, ushort>> packetQueue = new Queue<Tuple<Packet, ushort>>();
 
-        private void AddJob(Action action) => jobQueue.Push(action);
+        public void AddJob(Action action) => jobQueue.Push(action);
 
         public void FlushPacketQueue()
         {

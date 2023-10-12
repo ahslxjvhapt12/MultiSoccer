@@ -1,10 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="QWER.NETWORK">
+      <HintPath>C:\Users\USER\source\repos\NetworkFramework\Packets\bin\Debug\net6.0\QWER.NETWORK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

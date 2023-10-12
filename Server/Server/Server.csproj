@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Packets\Packets.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="QWER.NETWORK">
       <HintPath>C:\Users\USER\source\repos\NetworkFramework\Packets\bin\Debug\net6.0\QWER.NETWORK.dll</HintPath>
     </Reference>
