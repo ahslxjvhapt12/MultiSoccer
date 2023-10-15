@@ -1,10 +1,6 @@
 ﻿using QWER.NETWORK;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Server
 {
@@ -20,7 +16,7 @@ namespace Server
             Console.WriteLine($"{endPoint} 나갔슈");
         }
 
-        public override void OnPacketReceive(ArraySegment<byte> buffer)
+        public override void OnPacketReceived(ArraySegment<byte> buffer)
         {
             Console.WriteLine($"{buffer.Count} : 받음!");
             PacketManager.Instance.HandlePacket(this, PacketManager.Instance.CreatePacket(buffer));

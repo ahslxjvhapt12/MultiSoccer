@@ -3,6 +3,8 @@ using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace QWER.NETWORK
 {
@@ -59,7 +61,7 @@ namespace QWER.NETWORK
 
         public void Send(ArraySegment<byte> sendBuffer) // 패킷 송신 요청 함수
         {
-            lock(locker)
+            lock (locker)
             {
                 sendQueue.Enqueue(sendBuffer); // sendQueue에 패킷 예약
                 if (pendingList.Count == 0) // pendingList가 0이라면 (현재 전송중인 데이터가 없다면)
@@ -130,11 +132,12 @@ namespace QWER.NETWORK
 
         private void OnReceiveCompleted(object sender, SocketAsyncEventArgs args) // 수신 완료 콜백
         {
-            if(args.SocketError == SocketError.Success && args.BytesTransferred > 0) // 에러 없이 데이터가 수신되었다면
+            UnityEngine.Debug.Log(args.BytesTransferred);
+            if (args.SocketError == SocketError.Success && args.BytesTransferred > 0) // 에러 없이 데이터가 수신되었다면
             {
                 bool result = receiveBuffer.ShiftWriteCursor(args.BytesTransferred); // 데이터를 받은 만큼 WriteCursor 업데이트
 
-                if(result == false) // WriteCursor 업데이트 중 문제가 생겼다면
+                if (result == false) // WriteCursor 업데이트 중 문제가 생겼다면
                 {
                     Close(); // 연결 해제
                     return; // return
@@ -143,14 +146,14 @@ namespace QWER.NETWORK
                 ArraySegment<byte> buffer = receiveBuffer.ReadBuffer; // 데이터를 읽을 버퍼 발급
 
                 int processedLength = HandleBuffer(buffer); // 버퍼 핸들링
-                if(processedLength < 0 || receiveBuffer.Size < processedLength) // 핸들링 도중 문제가 생겼다면
+                if (processedLength < 0 || receiveBuffer.Size < processedLength) // 핸들링 도중 문제가 생겼다면
                 {
                     Close(); // 연결 해제
                     return; // return
                 }
 
                 result = receiveBuffer.ShiftReadCursor(processedLength); // 핸들링 된 만큼만 ReadCursor 업데이트
-                if(result == false) // ReadCursor 업데이트 중 문제가 생겼다면
+                if (result == false) // ReadCursor 업데이트 중 문제가 생겼다면
                 {
                     Close(); // 연결 해제
                     return; // return
@@ -168,7 +171,7 @@ namespace QWER.NETWORK
         {
             int processedLength = 0; // 처리한 길이
 
-            while(true)
+            while (true)
             {
                 if (buffer.Count < HeaderSize) // 읽을 데이터가 header의 사이즈보다 작다면
                     break; // 루프 끝내기

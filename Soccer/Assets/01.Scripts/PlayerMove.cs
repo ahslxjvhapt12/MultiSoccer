@@ -14,8 +14,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField][Range(1f, 10f)] private float jumpPower = 10f;
     [SerializeField][Range(0f, 1f)] private float kickDuration = 0.3f;
     [SerializeField][Range(0f, 1f)] private float kickIntervalTime = 0.1f;
-    [SerializeField] private float maxHP = 100;
-    private float currentHP;
     private bool onKick = false;
 
     [Header("-")]
@@ -25,7 +23,6 @@ public class PlayerMove : MonoBehaviour
     private PolygonCollider2D footCol;
 
     private Rigidbody2D _rigid;
-    private event Action EndOfKick;
 
 
     [Header("Networks")]
@@ -38,12 +35,6 @@ public class PlayerMove : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         footCol = footAnchor.transform.GetChild(0).GetComponent<PolygonCollider2D>();
-        currentHP = maxHP;
-    }
-
-    private void OnEnable()
-    {
-        EndOfKick += SetAnchorScale;
     }
 
     private void Update()
@@ -53,13 +44,6 @@ public class PlayerMove : MonoBehaviour
             Jump();
         if (Input.GetMouseButtonDown(0) && onKick == false)
             Kick();
-        if (Input.GetMouseButtonDown(1))
-            Dash();
-    }
-
-    private void OnDisable()
-    {
-        EndOfKick -= SetAnchorScale;
     }
 
     private void Move()
@@ -68,12 +52,6 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(h, 0, 0) * Time.deltaTime * speed;
-        if (x != 0)
-        {
-            visual.transform.localScale = new Vector3(-x, 1, 1);
-            if (onKick == false)
-                SetAnchorScale();
-        }
     }
 
     private void Jump()
@@ -103,18 +81,7 @@ public class PlayerMove : MonoBehaviour
                 footCol.enabled = false;
                 footAnchor.transform.rotation = new Quaternion(0, 0, 0, 0);
                 onKick = false;
-                EndOfKick?.Invoke();
             });
-    }
-
-    private void SetAnchorScale()
-    {
-        footAnchor.transform.localScale = visual.transform.localScale;
-    }
-
-    private void Dash()
-    {
-        Debug.Log("Dash»£√‚");
     }
 
     private void OnDrawGizmosSelected()

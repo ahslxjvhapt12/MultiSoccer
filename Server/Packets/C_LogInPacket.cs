@@ -16,7 +16,7 @@ namespace Packets
 
             process += sizeof(ushort);
             process += sizeof(ushort);
-            process += PacketUtility.TranslateString(buffer, process, out nickname);
+            process += PacketUtility.ReadStringData(buffer, process, out nickname);
         }
 
         public override ArraySegment<byte> Serialize()

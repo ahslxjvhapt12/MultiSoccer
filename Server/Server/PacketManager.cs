@@ -1,4 +1,5 @@
-﻿using QWER.NETWORK;
+﻿using Packets;
+using QWER.NETWORK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +28,18 @@ namespace Server
         {
             packetFactories.Clear();
             packetHandlers.Clear();
+
+            RegisterHandler();
         }
 
         private void RegisterHandler() // 핸들러 구독
         {
-
+            packetFactories.Add((ushort)PacketID.C_LogInPacket, PacketUtility.CreatePacket<C_LogInPacket>);
+            packetHandlers.Add((ushort)PacketID.C_LogInPacket, PacketHandler.C_LogInPacket);
+            packetFactories.Add((ushort)PacketID.C_RoomEnterPacket, PacketUtility.CreatePacket<C_RoomEnterPacket>);
+            packetHandlers.Add((ushort)PacketID.C_RoomEnterPacket, PacketHandler.C_RoomEnterPacket);
+            packetFactories.Add((ushort)PacketID.C_MovePacket, PacketUtility.CreatePacket<C_MovePacket>);
+            packetHandlers.Add((ushort)PacketID.C_MovePacket, PacketHandler.C_MovePacket);
         }
 
         public Packet CreatePacket(ArraySegment<byte> buffer)

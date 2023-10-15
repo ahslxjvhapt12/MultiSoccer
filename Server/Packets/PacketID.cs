@@ -4,10 +4,10 @@
     {
         C_LogInPacket,
         S_LogInPacket,
-        //C_RoomEnterPacket,
-        //S_RoomEnterPacket,
-        //S_PlayerJoinPacket,
-        //S_MovePacket,
-        //C_MovePacket
+        C_RoomEnterPacket,
+        S_RoomEnterPacket,
+        S_PlayerJoinPacket,
+        S_MovePacket,
+        C_MovePacket
     }
 }
