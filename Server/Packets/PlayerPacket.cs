@@ -19,12 +19,11 @@ namespace Packets
 
         }
 
-        public PlayerPacket(ushort playerID, float x, float y, float z)
+        public PlayerPacket(ushort playerID, float x, float y)
         {
             this.playerID = playerID;
             this.x = x;
             this.y = y;
-            this.z = z;
         }
 
         public override ushort Deserialize(ArraySegment<byte> buffer, int offset)

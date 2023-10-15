@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GoalPost : MonoBehaviour
 {
@@ -19,10 +14,12 @@ public class GoalPost : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.attachedRigidbody.TryGetComponent<Ball>(out Ball b)){
+        if (collision.attachedRigidbody.TryGetComponent<Ball>(out Ball b))
+        {
+            Debug.Log("°ñ");
             score++;
             ScoreTXT.text = score.ToString();
-            b.InitializePosition();
+            b.InitGame();
         }
     }
 }

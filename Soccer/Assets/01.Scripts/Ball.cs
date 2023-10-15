@@ -12,10 +12,16 @@ public class Ball : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
     }
 
-    [ContextMenu("Init Ball")]
-    public void InitializePosition()
+    [ContextMenu("Init Game")]
+    public void InitGame()
     {
         transform.position = Vector3.zero;
         _rigid.AddForce(Vector2.up * 1.5f, ForceMode2D.Impulse);
+
+        GameObject player = GameObject.Find("Player_Blue");
+        GameObject otherPlayer = GameObject.Find("OtherPlayer");
+
+        player.transform.position = new Vector3(-5, -2, 0);
+        otherPlayer.transform.position = new Vector3(5, -2, 0);
     }
 }

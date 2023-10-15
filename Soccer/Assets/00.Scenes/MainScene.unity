@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 16812779}
   - component: {fileID: 16812778}
   - component: {fileID: 16812780}
+  - component: {fileID: 16812781}
   m_Layer: 0
   m_Name: GoalPost_Blue
   m_TagString: Untagged
@@ -221,7 +222,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed018a778d72e7a448b064fbf56ff0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreTXT: {fileID: 2048621704}
+  ScoreTXT: {fileID: 152551506}
+--- !u!61 &16812781
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16812777}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4, y: -0.09}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.17, y: 1.8}
+  m_EdgeRadius: 0
 --- !u!1001 &19203372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1112,6 +1139,7 @@ GameObject:
   - component: {fileID: 886096501}
   - component: {fileID: 886096500}
   - component: {fileID: 886096502}
+  - component: {fileID: 886096503}
   m_Layer: 0
   m_Name: GoalPost_Red
   m_TagString: Untagged
@@ -1199,7 +1227,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed018a778d72e7a448b064fbf56ff0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreTXT: {fileID: 152551506}
+  ScoreTXT: {fileID: 2048621704}
+--- !u!61 &886096503
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886096499}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4, y: -0.09000003}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.17, y: 1.8}
+  m_EdgeRadius: 0
 --- !u!1 &887095299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,11 +1840,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 31cefbdf3e915af4ea0e94b15ae5b4f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 31cefbdf3e915af4ea0e94b15ae5b4f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.65
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 31cefbdf3e915af4ea0e94b15ae5b4f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2036,7 +2090,7 @@ GameObject:
   - component: {fileID: 1769439664}
   - component: {fileID: 1769439663}
   - component: {fileID: 1769439665}
-  - component: {fileID: 1769439666}
+  - component: {fileID: 1769439668}
   - component: {fileID: 1769439667}
   m_Layer: 0
   m_Name: MonsterBall
@@ -2086,12 +2140,12 @@ SpriteRenderer:
   m_SortingLayerID: 550483567
   m_SortingLayer: 2
   m_SortingOrder: 50
-  m_Sprite: {fileID: -341077248, guid: a96cadabc3a4bc041915555bd212e14d, type: 3}
+  m_Sprite: {fileID: -842826294, guid: 030d69e35ee0188459da92c72485e5bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.875, y: 1.875}
+  m_Size: {x: 2.9, y: 2.905}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2133,7 +2187,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1769439666
+--- !u!114 &1769439667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769439662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfba07d42d82c74188dc4969336d16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1769439668
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2148,19 +2214,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.46875
---- !u!114 &1769439667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdfba07d42d82c74188dc4969336d16a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.363125
 --- !u!1 &1773117331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,16 +2757,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268245590119076886, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.59
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8268245590119076886, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2745,14 +2795,6 @@ PrefabInstance:
     - target: {fileID: 8268245590119076886, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268245590162075909, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268245591059722579, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8422f1c9642bab14e982d4f87547aa2e, type: 3}

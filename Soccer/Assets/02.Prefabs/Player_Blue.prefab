@@ -184,7 +184,6 @@ MonoBehaviour:
   jumpPower: 5
   kickDuration: 0.2
   kickIntervalTime: 0.1
-  maxHP: 100
   origin: {fileID: 8268245590950488084}
   visual: {fileID: 8268245591059722589}
   footAnchor: {fileID: 8268245590162075909}
@@ -262,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 8268245590162075909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.22900009, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8268245589984924091}
@@ -326,7 +325,7 @@ Transform:
   m_GameObject: {fileID: 8268245591059722589}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8268245590119076886}

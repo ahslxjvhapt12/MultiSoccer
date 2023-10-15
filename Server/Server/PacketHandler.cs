@@ -15,7 +15,7 @@ namespace Server
             C_LogInPacket loginPacket = packet as C_LogInPacket;
             ClientSession clientSession = session as ClientSession;
 
-            Player player = new Player(clientSession, Program.playerCount, loginPacket.nickname, 0, 0, 0);
+            Player player = new Player(clientSession, Program.playerCount, loginPacket.nickname, 0, 0);
             Program.players.Add(player.playerID, player);
             Program.playerCount++;
 
@@ -41,21 +41,34 @@ namespace Server
                 Console.WriteLine($"현재 플레이어 아이디 : {p}");
 
                 Player player = Program.players[p];
-                PlayerPacket playerPacket = new PlayerPacket(player.playerID, player.x, player.y, player.z);
+                PlayerPacket playerPacket = new PlayerPacket(player.playerID, player.x, player.y);
                 resPacket.playerList.Add(playerPacket);
             });
             session.Send(resPacket.Serialize());
 
             Player player = Program.players[enterPacket.playerID];
             S_PlayerJoinPacket broadcastPacket = new S_PlayerJoinPacket();
-            broadcastPacket.playerData = new PlayerPacket(player.playerID, player.x, player.y, player.z);
+            broadcastPacket.playerData = new PlayerPacket(player.playerID, player.x, player.y);
 
             room.AddJob(() => room.Broadcast(broadcastPacket, player.playerID));
         }
 
         public static void C_MovePacket(Session session, Packet packet)
         {
+            C_MovePacket movePacket = packet as C_MovePacket;
+            GameRoom room = Program.room;
 
+            Player player = room.GetPlayer(movePacket.playerData.playerID);
+            if (player == null)
+                return;
+
+            player.x = movePacket.playerData.x;
+            player.y = movePacket.playerData.y;
+
+            S_MovePacket resPacket = new S_MovePacket();
+            resPacket.playerData = new PlayerPacket(player.playerID, player.x, player.y);
+
+            room.Broadcast(resPacket, movePacket.playerData.playerID);
         }
     }
 }
