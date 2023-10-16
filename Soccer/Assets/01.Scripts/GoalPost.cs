@@ -19,7 +19,12 @@ public class GoalPost : MonoBehaviour
             Debug.Log("°ñ");
             score++;
             ScoreTXT.text = score.ToString();
-            b.InitGame();
+
+            C_GoalPacket goalPacket = new C_GoalPacket();
+            goalPacket.playerID = (ushort)GameManager.Instance.PlayerID;
+
+            NetworkManager.Instance.Send(goalPacket);
+            //b.InitGame();
         }
     }
 }

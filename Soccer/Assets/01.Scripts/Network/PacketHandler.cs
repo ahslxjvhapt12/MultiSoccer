@@ -37,7 +37,9 @@ public class PacketHandler
         {
             if (GameManager.Instance.PlayerID == 0)
             {
-                GameObject.FindObjectOfType<DummyBall>().AddComponent<Ball>();
+                DummyBall obj = GameObject.FindObjectOfType<DummyBall>();
+                if (!obj.TryGetComponent<Ball>(out Ball b))
+                    obj.AddComponent<Ball>();
             }
             enterPacket.playerList.ForEach(GameManager.Instance.AddPlayer);
         });
@@ -62,5 +64,6 @@ public class PacketHandler
     {
         Debug.Log("GoalPacket ¹ÞÀ½");
         GameObject.FindObjectOfType<GoalEvent>().Goal();
+        GameObject.FindObjectOfType<Ball>().InitGame();
     }
 }

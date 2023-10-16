@@ -11,6 +11,7 @@ public class GoalEvent : MonoBehaviour
 
     [SerializeField] GameObject panel;
 
+    [ContextMenu("Goal")]
     public void Goal()
     {
         Sequence seq = DOTween.Sequence();
@@ -18,9 +19,9 @@ public class GoalEvent : MonoBehaviour
         {
             panel.transform.position = startPos.transform.position;
         });
-        seq.Append(panel.transform.DOMove(midPos.transform.position, 0.3f).SetEase(Ease.OutQuint));
-        seq.AppendInterval(0.1f);
-        seq.Append(panel.transform.DOMove(endPos.transform.position, 0.2f).SetEase(Ease.InQuint));
+        seq.Append(panel.transform.DOMove(midPos.transform.position, 1f).SetEase(Ease.OutQuint));
+        seq.AppendInterval(0.2f);
+        seq.Append(panel.transform.DOMove(endPos.transform.position, 1f).SetEase(Ease.InQuint));
         seq.OnComplete(() =>
         {
             panel.transform.position = endPos.transform.position;

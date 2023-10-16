@@ -99,7 +99,7 @@ namespace Server
             S_GoalPacket resPacket = new S_GoalPacket();
             resPacket.playerID = goalPacket.playerID;
 
-            room.Broadcast(resPacket, goalPacket.playerID);
+            room.Broadcast(resPacket, ushort.MaxValue);
         }
     }
 }
