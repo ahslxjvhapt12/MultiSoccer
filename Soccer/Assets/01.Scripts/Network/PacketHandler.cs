@@ -1,7 +1,6 @@
 using Packets;
 using QWER.NETWORK;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PacketHandler
@@ -36,14 +35,32 @@ public class PacketHandler
 
         SceneLoader.Instance.LoadSceneAsync("MainScene", () =>
         {
+            if (GameManager.Instance.PlayerID == 0)
+            {
+                GameObject.FindObjectOfType<DummyBall>().AddComponent<Ball>();
+            }
             enterPacket.playerList.ForEach(GameManager.Instance.AddPlayer);
         });
     }
 
     public static void S_KickPacket(Session session, Packet packet)
     {
-        S_KickPacket kickPacket = packet as S_KickPacket;
+        Debug.Log("KickPacket 받음");
+        //GameObject.Find("OtherPlayer").GetComponent<OtherPlayer>().Kick();
+        GameObject.FindObjectOfType<OtherPlayer>().Kick();
+    }
 
-        GameObject.Find("OtherPlayer").GetComponent<OtherPlayer>().Kick();
+    public static void S_BallMovePacket(Session session, Packet packet)
+    {
+        S_BallMovePacket movePacket = packet as S_BallMovePacket;
+        PlayerPacket playerData = movePacket.playerData;
+
+        GameObject.Find("Ball").GetComponent<DummyBall>().SetPosition(playerData);
+    }
+
+    public static void S_GoalPacket(Session session, Packet packet)
+    {
+        Debug.Log("GoalPacket 받음");
+        GameObject.FindObjectOfType<GoalEvent>().Goal();
     }
 }

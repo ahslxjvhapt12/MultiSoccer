@@ -37,12 +37,21 @@ namespace Server
         {
             packetFactories.Add((ushort)PacketID.C_LogInPacket, PacketUtility.CreatePacket<C_LogInPacket>);
             packetHandlers.Add((ushort)PacketID.C_LogInPacket, PacketHandler.C_LogInPacket);
+
             packetFactories.Add((ushort)PacketID.C_RoomEnterPacket, PacketUtility.CreatePacket<C_RoomEnterPacket>);
             packetHandlers.Add((ushort)PacketID.C_RoomEnterPacket, PacketHandler.C_RoomEnterPacket);
+
             packetFactories.Add((ushort)PacketID.C_MovePacket, PacketUtility.CreatePacket<C_MovePacket>);
             packetHandlers.Add((ushort)PacketID.C_MovePacket, PacketHandler.C_MovePacket);
+
             packetFactories.Add((ushort)PacketID.C_KickPacket, PacketUtility.CreatePacket<C_KickPacket>);
             packetHandlers.Add((ushort)PacketID.C_KickPacket, PacketHandler.C_KickPacket);
+
+            packetFactories.Add((ushort)PacketID.C_BallMovePacket, PacketUtility.CreatePacket<C_BallMovePacket>);
+            packetHandlers.Add((ushort)PacketID.C_BallMovePacket, PacketHandler.C_BallMovePacket);
+
+            packetFactories.Add((ushort)PacketID.C_GoalPacket, PacketUtility.CreatePacket<C_GoalPacket>);
+            packetHandlers.Add((ushort)PacketID.C_GoalPacket, PacketHandler.C_GoalPacket);
         }
 
         public Packet CreatePacket(ArraySegment<byte> buffer)

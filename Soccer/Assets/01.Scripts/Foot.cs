@@ -5,14 +5,15 @@ using UnityEngine;
 public class Foot : MonoBehaviour
 {
     [SerializeField] private float power = 10;
+    [SerializeField] GameObject visual;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Ball>(out Ball b))
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(GetRandomDir() * power, ForceMode2D.Impulse);
+            collision.GetComponent<Rigidbody2D>().AddForce(GetDir() * power, ForceMode2D.Impulse);
         }
     }
 
-    private Vector3 GetRandomDir() => ((Vector2.zero - Random.insideUnitCircle) + Vector2.up).normalized;
+    private Vector3 GetDir() => new Vector2(-visual.transform.localScale.x * 1.5f, 2).normalized;
 }

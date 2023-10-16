@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
+  visual: {fileID: 8268245591059722589}
 --- !u!1 &8268245590119076881
 GameObject:
   m_ObjectHideFlags: 0

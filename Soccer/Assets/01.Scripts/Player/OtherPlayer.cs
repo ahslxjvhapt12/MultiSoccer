@@ -14,6 +14,11 @@ public class OtherPlayer : MonoBehaviour
     [SerializeField] private GameObject footAnchor;
     private PolygonCollider2D footCol;
 
+    private void Awake()
+    {
+        footCol = footAnchor.transform.GetChild(0).GetComponent<PolygonCollider2D>();
+    }
+
     public void SetPosition(PlayerPacket playerData)
     {
         Vector3 pos = transform.position;
@@ -25,7 +30,7 @@ public class OtherPlayer : MonoBehaviour
 
     public void Kick()
     {
-        Debug.Log("KickÈ£Ãâ");
+        Debug.Log("Other Player Kick");
         Sequence seq = DOTween.Sequence()
             .PrependCallback(() =>
             {

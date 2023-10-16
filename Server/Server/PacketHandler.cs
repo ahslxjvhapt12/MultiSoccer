@@ -77,7 +77,29 @@ namespace Server
             GameRoom room = Program.room;
 
             S_KickPacket s_KickPacket = new S_KickPacket();
-            room.Broadcast(s_KickPacket, kickPacket.ID);
+            room.Broadcast(s_KickPacket, kickPacket.playerID);
+        }
+
+        public static void C_BallMovePacket(Session session, Packet packet)
+        {
+            C_BallMovePacket movePacket = packet as C_BallMovePacket;
+            GameRoom room = Program.room;
+
+            S_BallMovePacket resPacket = new S_BallMovePacket();
+            resPacket.playerData = new PlayerPacket(movePacket.playerData.playerID, movePacket.playerData.x, movePacket.playerData.y);
+
+            room.Broadcast(resPacket, movePacket.playerData.playerID);
+        }
+
+        public static void C_GoalPacket(Session session, Packet packet)
+        {
+            C_GoalPacket goalPacket = packet as C_GoalPacket;
+            GameRoom room = Program.room;
+
+            S_GoalPacket resPacket = new S_GoalPacket();
+            resPacket.playerID = goalPacket.playerID;
+
+            room.Broadcast(resPacket, goalPacket.playerID);
         }
     }
 }

@@ -13,7 +13,11 @@ public class S_KickPacket : Packet
 
     public override void Deserialize(ArraySegment<byte> buffer)
     {
+        ushort process = 0;
 
+        process += sizeof(ushort);
+        process += sizeof(ushort);
+        process += PacketUtility.ReadUShortData(buffer, process, out playerID);
     }
 
     public override ArraySegment<byte> Serialize()

@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(h, 0, 0) * Time.deltaTime * speed;
     }
-    
+
     private void Jump()
     {
         if (Physics2D.Raycast(origin.position, Vector2.down, rayDinstance))
@@ -87,6 +87,7 @@ public class PlayerMove : MonoBehaviour
     private void Kick()
     {
         C_KickPacket packet = new C_KickPacket();
+        packet.playerID = (ushort)GameManager.Instance.PlayerID;
         NetworkManager.Instance.Send(packet);
 
 

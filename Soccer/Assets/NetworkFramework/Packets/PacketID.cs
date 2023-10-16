@@ -11,5 +11,9 @@
         S_MovePacket,
         C_KickPacket,
         S_KickPacket,
+        C_BallMovePacket,
+        S_BallMovePacket,
+        C_GoalPacket,
+        S_GoalPacket,
     }
 }
