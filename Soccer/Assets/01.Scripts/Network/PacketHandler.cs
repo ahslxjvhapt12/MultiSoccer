@@ -34,8 +34,16 @@ public class PacketHandler
     {
         S_RoomEnterPacket enterPacket = packet as S_RoomEnterPacket;
 
-        SceneLoader.Instance.LoadSceneAsync("MainScene", () => {
+        SceneLoader.Instance.LoadSceneAsync("MainScene", () =>
+        {
             enterPacket.playerList.ForEach(GameManager.Instance.AddPlayer);
         });
+    }
+
+    public static void S_KickPacket(Session session, Packet packet)
+    {
+        S_KickPacket kickPacket = packet as S_KickPacket;
+
+        GameObject.Find("OtherPlayer").GetComponent<OtherPlayer>().Kick();
     }
 }

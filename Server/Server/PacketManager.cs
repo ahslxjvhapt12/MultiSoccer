@@ -2,6 +2,7 @@
 using QWER.NETWORK;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,8 @@ namespace Server
             packetHandlers.Add((ushort)PacketID.C_RoomEnterPacket, PacketHandler.C_RoomEnterPacket);
             packetFactories.Add((ushort)PacketID.C_MovePacket, PacketUtility.CreatePacket<C_MovePacket>);
             packetHandlers.Add((ushort)PacketID.C_MovePacket, PacketHandler.C_MovePacket);
+            packetFactories.Add((ushort)PacketID.C_KickPacket, PacketUtility.CreatePacket<C_KickPacket>);
+            packetHandlers.Add((ushort)PacketID.C_KickPacket, PacketHandler.C_KickPacket);
         }
 
         public Packet CreatePacket(ArraySegment<byte> buffer)

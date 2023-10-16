@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Packets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,17 +47,37 @@ public class PlayerMove : MonoBehaviour
             Kick();
     }
 
+    private void LateUpdate()
+    {
+        if (lastSyncTime + syncDelay > Time.time)
+            return;
+
+        if ((lastSyncPosition - transform.position).sqrMagnitude < syncDistanceErr * syncDistanceErr)
+            return;
+
+        PlayerPacket playerData = new PlayerPacket();
+        playerData.playerID = (ushort)GameManager.Instance.PlayerID;
+        playerData.x = -transform.position.x;
+        playerData.y = transform.position.y;
+
+        C_MovePacket packet = new C_MovePacket();
+        packet.playerData = playerData;
+
+        NetworkManager.Instance.Send(packet);
+
+        lastSyncPosition = transform.position;
+        lastSyncTime = Time.time;
+    }
+
     private void Move()
     {
-        Debug.Log("Move호출");
         float h = Input.GetAxis("Horizontal");
         float x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(h, 0, 0) * Time.deltaTime * speed;
     }
-
+    
     private void Jump()
     {
-        Debug.Log("Jump호출");
         if (Physics2D.Raycast(origin.position, Vector2.down, rayDinstance))
         {
             _rigid.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
@@ -65,7 +86,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Kick()
     {
-        Debug.Log("Kick호출");
+        C_KickPacket packet = new C_KickPacket();
+        NetworkManager.Instance.Send(packet);
+
+
         DG.Tweening.Sequence seq = DOTween.Sequence()
             .PrependCallback(() =>
             {

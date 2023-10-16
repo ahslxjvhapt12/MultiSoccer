@@ -16,6 +16,7 @@ public class Ball : MonoBehaviour
     public void InitGame()
     {
         transform.position = Vector3.zero;
+        _rigid.velocity = Vector3.zero;
         _rigid.AddForce(Vector2.up * 1.5f, ForceMode2D.Impulse);
 
         GameObject player = GameObject.Find("Player_Blue");

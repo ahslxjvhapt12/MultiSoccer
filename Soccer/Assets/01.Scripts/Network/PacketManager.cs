@@ -43,6 +43,8 @@ public class PacketManager
         packetHandlers.Add((ushort)PacketID.S_PlayerJoinPacket, PacketHandler.S_PlayerJoinPacket);
         packetFactories.Add((ushort)PacketID.S_RoomEnterPacket, PacketUtility.CreatePacket<S_RoomEnterPacket>);
         packetHandlers.Add((ushort)PacketID.S_RoomEnterPacket, PacketHandler.S_RoomEnterPacket);
+        packetFactories.Add((ushort)PacketID.S_KickPacket, PacketUtility.CreatePacket<S_KickPacket>);
+        packetHandlers.Add((ushort)PacketID.S_KickPacket, PacketHandler.S_KickPacket);
     }
 
     public Packet CreatePacket(ArraySegment<byte> buffer)

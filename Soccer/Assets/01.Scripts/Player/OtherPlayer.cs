@@ -19,7 +19,6 @@ public class OtherPlayer : MonoBehaviour
         Vector3 pos = transform.position;
         pos.x = playerData.x;
         pos.y = playerData.y;
-        pos.z = playerData.z;
 
         transform.position = pos;
     }

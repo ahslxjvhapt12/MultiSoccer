@@ -12,19 +12,17 @@ namespace Packets
         public ushort playerID;
         public float x;
         public float y;
-        public float z;
 
         public PlayerPacket()
         {
 
         }
 
-        public PlayerPacket(ushort playerID, float x, float y, float z)
+        public PlayerPacket(ushort playerID, float x, float y)
         {
             this.playerID = playerID;
             this.x = x;
             this.y = y;
-            this.z = z;
         }
 
         public override ushort Deserialize(ArraySegment<byte> buffer, int offset)
@@ -33,7 +31,6 @@ namespace Packets
             process += PacketUtility.ReadUShortData(buffer, offset + process, out this.playerID);
             process += PacketUtility.ReadFloatData(buffer, offset + process, out this.x);
             process += PacketUtility.ReadFloatData(buffer, offset + process, out this.y);
-            process += PacketUtility.ReadFloatData(buffer, offset + process, out this.z);
 
             return process;
         }
@@ -44,7 +41,6 @@ namespace Packets
             process += PacketUtility.AppendUShortData(this.playerID, buffer, offset + process);
             process += PacketUtility.AppendFloatData(this.x, buffer, offset + process);
             process += PacketUtility.AppendFloatData(this.y, buffer, offset + process);
-            process += PacketUtility.AppendFloatData(this.z, buffer, offset + process);
 
             return process;
         }

@@ -34,7 +34,8 @@ namespace Server
 
             S_RoomEnterPacket resPacket = new S_RoomEnterPacket();
             resPacket.playerList = new List<PlayerPacket>();
-            room.players.ForEach(p => {
+            room.players.ForEach(p =>
+            {
                 if (p == enterPacket.playerID)
                     return;
 
@@ -61,7 +62,6 @@ namespace Server
             Player player = room.GetPlayer(movePacket.playerData.playerID);
             if (player == null)
                 return;
-
             player.x = movePacket.playerData.x;
             player.y = movePacket.playerData.y;
 
@@ -69,6 +69,15 @@ namespace Server
             resPacket.playerData = new PlayerPacket(player.playerID, player.x, player.y);
 
             room.Broadcast(resPacket, movePacket.playerData.playerID);
+        }
+
+        public static void C_KickPacket(Session session, Packet packet)
+        {
+            C_KickPacket kickPacket = packet as C_KickPacket;
+            GameRoom room = Program.room;
+
+            S_KickPacket s_KickPacket = new S_KickPacket();
+            room.Broadcast(s_KickPacket, kickPacket.ID);
         }
     }
 }
