@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<ushort, OtherPlayer> otherPlayers = new Dictionary<ushort, OtherPlayer>();
 
+    [SerializeField] public PhysicsMaterial2D mat;
     [SerializeField] OtherPlayer playerPrefab;
     public int PlayerID = -1;
 

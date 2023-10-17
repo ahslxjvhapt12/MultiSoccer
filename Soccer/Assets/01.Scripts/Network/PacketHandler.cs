@@ -3,6 +3,7 @@ using QWER.NETWORK;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class PacketHandler
 {
     public static void S_LogInPacket(Session session, Packet packet)
@@ -40,6 +41,10 @@ public class PacketHandler
                 DummyBall obj = GameObject.FindObjectOfType<DummyBall>();
                 if (!obj.TryGetComponent<Ball>(out Ball b))
                     obj.AddComponent<Ball>();
+                 obj.AddComponent<Rigidbody2D>();
+                Rigidbody2D rigid = obj.GetComponent<Rigidbody2D>();
+                rigid.mass = 0.1f;
+                rigid.sharedMaterial = GameManager.Instance.mat;
             }
             enterPacket.playerList.ForEach(GameManager.Instance.AddPlayer);
         });

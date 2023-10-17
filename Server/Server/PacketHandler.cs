@@ -86,9 +86,12 @@ namespace Server
             GameRoom room = Program.room;
 
             S_BallMovePacket resPacket = new S_BallMovePacket();
-            resPacket.playerData = new PlayerPacket(movePacket.playerData.playerID, movePacket.playerData.x, movePacket.playerData.y);
+            PlayerPacket player = new PlayerPacket(movePacket.playerData.playerID, movePacket.playerData.x, movePacket.playerData.y);
+            resPacket.playerData = player;
 
-            room.Broadcast(resPacket, movePacket.playerData.playerID);
+            //resPacket.playerData =/* new PlayerPacket(movePacket.playerData.playerID, movePacket.playerData.x, movePacket.playerData.y);*/
+
+            room.Broadcast(resPacket, 0);
         }
 
         public static void C_GoalPacket(Session session, Packet packet)
