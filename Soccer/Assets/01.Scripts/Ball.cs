@@ -7,8 +7,8 @@ public class Ball : MonoBehaviour
     private Rigidbody2D _rigid;
 
     [Header("Networks")]
-    [SerializeField] float syncDelay = 0.02f;
-    [SerializeField] float syncDistanceErr = 0.1f;
+    [SerializeField] float syncDelay = 0.01f;
+    [SerializeField] float syncDistanceErr = 0.01f;
     private float lastSyncTime = 0f;
     private Vector3 lastSyncPosition = Vector3.zero;
 
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
 
         player.transform.position = new Vector3(-5, -2, 0);
         otherPlayer.transform.position = new Vector3(5, -2, 0);
-        
+
         transform.position = Vector3.zero;
         _rigid.velocity = Vector3.zero;
         _rigid.AddForce(Vector2.up * 0.5f, ForceMode2D.Impulse);

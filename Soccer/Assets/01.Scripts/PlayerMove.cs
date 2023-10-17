@@ -27,8 +27,8 @@ public class PlayerMove : MonoBehaviour
 
 
     [Header("Networks")]
-    [SerializeField] float syncDelay = 0.05f;
-    [SerializeField] float syncDistanceErr = 0.1f;
+    [SerializeField] float syncDelay = 0.01f;
+    [SerializeField] float syncDistanceErr = 0.01f;
     private float lastSyncTime = 0f;
     private Vector3 lastSyncPosition = Vector3.zero;
 
